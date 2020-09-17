@@ -1,0 +1,17 @@
+%h1 New topic
+
+= link_to 'Back', root_path
+
+= form_for @topic do |f|
+  - if @topic.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@topic.errors.count, "error")} prohibited this topic from being saved:"
+      %ul
+        - @topic.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :topic
+    = f.text_field :topic
+  .actions
+    = f.submit 'Save'

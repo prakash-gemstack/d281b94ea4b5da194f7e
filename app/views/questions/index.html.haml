@@ -1,0 +1,12 @@
+%h2 Questions
+-@questions.each do |question|
+	= link_to "Question-  #{question.question}", question, class: "question"
+	%br
+%br
+= link_to 'New Question', new_question_path
+
+%h2 Topics
+- @topics.each do |topic|
+	Follow this topic: 
+	= link_to topic.topic, follow_topic_path(topic), method: :post, class: "follow_topic"
+	%br

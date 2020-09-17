@@ -1,0 +1,20 @@
+Follow this topic: 
+= link_to "#{@question.topic.topic}", follow_topic_path(@question.topic), method: :post, class: "follow_topic"
+%br
+Follow this User: 
+= link_to @question.user.email, follow_user_path(@question.user), method: :post, class: "follow_user"
+
+%h2 Answers
+- @question.answers.each do |answer|
+  %p.answer
+    answer: 
+    = answer.answer
+%br
+
+%h3 Submit your answer
+= form_for :answer, url: question_answers_path(@question.id) do |form|
+  .field
+    = form.label :answer
+    = form.text_field :answer
+  .actions
+    = form.submit 'Save'
